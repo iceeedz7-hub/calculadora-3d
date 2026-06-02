@@ -190,11 +190,11 @@ function PrinterSelector({ value,onChange }) {
         <input
           ref={inputRef}
           type="text"
-          value={aberto?busca:value}
+          value={aberto ? busca : (value || "")}
           placeholder="Buscar ou selecionar impressora..."
           onChange={e=>{setBusca(e.target.value);if(!aberto)abrirDropdown();}}
-          onFocus={()=>{abrirDropdown();if(value)setBusca("");}}
-          style={{...sty.input,paddingRight:36}}
+          onFocus={()=>{setBusca(""); abrirDropdown();}}
+          style={{...sty.input,paddingRight:36, color: !aberto && value ? C.accent : C.text}}
         />
         <span style={{position:"absolute",right:14,top:"50%",transform:"translateY(-50%)",color:C.textDim,fontSize:11,pointerEvents:"none"}}>
           {aberto?"▲":"▼"}
