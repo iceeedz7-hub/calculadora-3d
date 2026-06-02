@@ -212,7 +212,8 @@ function PrinterSelector({ value,onChange }) {
                   {grupo.toUpperCase()}
                 </div>
                 {itens.map(p=>(
-                  <div key={p.modelo} onClick={()=>selecionar(p.modelo)}
+                  <div key={p.modelo}
+                    onMouseDown={e=>{ e.preventDefault(); selecionar(p.modelo); }}
                     style={{padding:"10px 16px",fontSize:13,color:value===p.modelo?C.accent:C.text,cursor:"pointer",background:value===p.modelo?C.accentDim:"transparent",transition:"background 0.1s",display:"flex",alignItems:"center",gap:8}}
                     onMouseEnter={e=>{ if(value!==p.modelo) e.currentTarget.style.background=C.accentDim+"88"; }}
                     onMouseLeave={e=>{ e.currentTarget.style.background=value===p.modelo?C.accentDim:"transparent"; }}
